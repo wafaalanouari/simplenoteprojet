@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Notes</h1>
+        <form class="form-inline my-2 my-lg-0" method="GET">
+            <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search notes">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <a class="btn btn-primary my-4" href="{% url 'note_new' %}">Add new note</a>
+        <ul class="list-group">
+            {% for note in notes %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a>
+                <span>
+                    <a class="btn btn-warning btn-sm" href="{% url 'note_edit' note.pk %}">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'note_delete' note.pk %}">Delete</a>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+        <a class="btn btn-primary my-3" href="{% url 'index' %}">Back to home</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
